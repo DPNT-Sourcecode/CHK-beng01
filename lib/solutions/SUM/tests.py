@@ -1,4 +1,9 @@
-import sum_solution
+from sum_solution import compute
+
+def test(a,b): 
+    print(compute(a,b))
 
 
-sum(1,2)
+test(1,2)
+
+test(100,100)

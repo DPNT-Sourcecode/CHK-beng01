@@ -4,5 +4,3 @@ def compute(x, y):
 
 testResult = compute(1, 1)
 
-print(testResult)
-
