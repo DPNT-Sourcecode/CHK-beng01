@@ -2,6 +2,7 @@
 def compute(x, y):
     return x + y
 
-compute(1, 1)
+testResult = compute(1, 1)
 
+print(testResult)
 
