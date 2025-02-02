@@ -33,7 +33,7 @@ def checkout(skus):
 
 def count_letters(s: str):
     counts = Counter(s)  # Count occurrences of all characters
-    valid_letters = "ABCDE"
+    valid_letters = "ABCDEF"
     
     # Extract counts for 'A', 'B', 'C', 'D'
     result = {letter: counts[letter] for letter in valid_letters}
@@ -94,4 +94,5 @@ def apply_free_F_offer(counts):
     if 'F' in counts:
         free_F_count = counts['F'] // 3  # One free F for every 3 Fs
         counts['F'] -= free_F_count  # Reduce count to reflect the free items
+
 
