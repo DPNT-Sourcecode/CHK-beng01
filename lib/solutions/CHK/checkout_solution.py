@@ -17,8 +17,8 @@ def calculateA(count: int):
     discount_quantity = 3
 
     # Calculate cost using discount for every set of 3 apples
-    sets_of_three = n // discount_quantity
-    remaining_apples = n % discount_quantity
+    sets_of_three = count // discount_quantity
+    remaining_apples = count % discount_quantity
 
     total_cost = (sets_of_three * discount_price) + (remaining_apples * cost_per_apple)
     return total_cost
@@ -29,10 +29,10 @@ def calculateB(count: int):
     discount_quantity = 2
 
     # Calculate cost using discount for every set of 3 apples
-    sets_of_two = n // discount_quantity
-    remaining_apples = n % discount_quantity
+    sets_of_two = count // discount_quantity
+    remaining_apples = count % discount_quantity
 
-    total_cost = (sets_of_three * discount_price) + (remaining_apples * cost_per_apple)
+    total_cost = (sets_of_two * discount_price) + (remaining_apples * cost_per_apple)
     return total_cost
 
 def calculateC(count: int):
@@ -52,5 +52,6 @@ def calculateD(count: int):
 | D    | 15    |                |
 +------+-------+----------------+ 
 """
+
 
 
