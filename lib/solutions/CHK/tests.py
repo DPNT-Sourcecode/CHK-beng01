@@ -52,7 +52,10 @@ lowerUpper = "AaBbCcDd"
 # print(checkout("BBBB"))
 print(checkout("EEB"))
 
+print(checkout("EEEEBB"))
+
 # print(checkout(mix))
+
 
 
 
