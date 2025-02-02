@@ -34,8 +34,15 @@ lowerUpper = "AaBbCcDd"
 
 print(checkout("AAA"))
 print(checkout("AAAA"))
-print(checkout("AAAAAA"))
 print(checkout("AAAAA"))
+print(checkout("AAAAAA"))
+print(checkout("AAAAAAA"))
+print(checkout("AAAAAAAA"))
+print(checkout("AAAAAAAAA"))
+print(checkout("AAAAAAAAAA"))
+print(checkout("AAAAAAAAAAA"))
+print(checkout("AAAAAAAAAAAA"))
+
 
 
 
@@ -44,6 +51,7 @@ print(checkout("AAAAA"))
 # print(checkout("BBBB"))
 
 # print(checkout(mix))
+
 
 
 
