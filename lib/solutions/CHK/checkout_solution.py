@@ -6,6 +6,7 @@ def checkout(skus):
     counts = count_letters(skus)
     if counts.get("invalid", 0) > 0: return -1
     apply_free_B_from_E(counts)
+    apply_free_F_offer(counts)
     return calculateA(counts.get('A', 0)) + calculateB(counts.get('B', 0)) + calculateC(counts.get('C', 0)) + calculateD(counts.get('D', 0)) + calculateE(counts.get('E', 0))
 
 
@@ -58,11 +59,20 @@ def calculateD(count: int):
 def calculateE(count: int):
     return count * 40
 
+def calculateF(count: int):
+    return count * 10
+
 def apply_free_B_from_E(counts):
     """ Apply the special offer: Buy 2 E, get 1 B free """
     if 'E' in counts and 'B' in counts:
         free_B_count = counts['E'] // 2  # One free B for every 2 Es
         counts['B'] = max(0, counts['B'] - free_B_count)  # Reduce B count to reflect free Bs
+
+def apply_free_F_offer(counts):
+    """ Apply the special offer: Buy 2 F, get 1 F free """
+    if 'F' in counts:
+        free_F_count = counts['F'] // 3  # One free F for every 3 Fs
+        counts['F'] -= free_F_count  # Reduce count to reflect the free items
 
 """
 +------+-------+------------------------+
@@ -73,5 +83,6 @@ def apply_free_B_from_E(counts):
 | C    | 20    |                        |
 | D    | 15    |                        |
 | E    | 40    | 2E get one B free      |
+| F    | 10    | 2F get one F free      |
 +------+-------+------------------------+
 """
