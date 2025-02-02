@@ -10,7 +10,7 @@ def checkout(skus):
 
 def count_letters(s: str):
     counts = Counter(s)  # Count occurrences of all characters
-    valid_letters = "ABCD"
+    valid_letters = "ABCDE"
     
     # Extract counts for 'A', 'B', 'C', 'D'
     result = {letter: counts[letter] for letter in valid_letters}
@@ -24,15 +24,16 @@ def count_letters(s: str):
     return result
 
 def calculateA(count: int):
-    cost_per_apple = 50
-    discount_price = 130  # Cost for 3 apples
-    discount_quantity = 3
+    price = 50
+    price_3A = 130  # 3A for 130
+    price_5A = 200  # 5A for 200
+    
+    sets_of_5 = count // 5
+    remaining_after_5 = count % 5
+    sets_of_3 = remaining_after_5 // 3
+    remaining_after_3 = remaining_after_5 % 3
 
-    # Calculate cost using discount for every set of 3 apples
-    sets_of_three = count // discount_quantity
-    remaining_apples = count % discount_quantity
-
-    total_cost = (sets_of_three * discount_price) + (remaining_apples * cost_per_apple)
+    total_cost = (sets_of_5 * price_5A) + (sets_of_3 * price_3A) + (remaining_after_3 * price)
     return total_cost
 
 def calculateB(count: int):
@@ -53,16 +54,19 @@ def calculateC(count: int):
 def calculateD(count: int):
     return count * 15
 
+def calculateE(count: int):
+    return count * 40
 
 """
-+------+-------+----------------+
-| Item | Price | Special offers |
-+------+-------+----------------+
-| A    | 50    | 3A for 130     |
-| B    | 30    | 2B for 45      |
-| C    | 20    |                |
-| D    | 15    |                |
-+------+-------+----------------+ 
++------+-------+------------------------+
+| Item | Price | Special offers         |
++------+-------+------------------------+
+| A    | 50    | 3A for 130, 5A for 200 |
+| B    | 30    | 2B for 45              |
+| C    | 20    |                        |
+| D    | 15    |                        |
+| E    | 40    | 2E get one B free      |
++------+-------+------------------------+
 """
 
 
