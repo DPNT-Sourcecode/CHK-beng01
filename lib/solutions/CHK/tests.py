@@ -4,7 +4,7 @@ from checkout_solution import count_letters
 ### ***TEST CASES***
 def run_formatted_test_cases():
     test_cases = [
-        ("STXYZ", 45),     # Group discount applies
+        ("STXYZ", 45),     # Group discount applies: 20 + 20 + 17 + 20 + 21 - 21 - 20 - 20 + 45
         ("STXXYZ", 62),    # 45 + 17 (Group discount + 1 extra X)
         ("STXYZXYZ", 90),  # 45 + 45 (Two group discounts)
         ("AAAAA", 200),
@@ -32,6 +32,7 @@ def run_formatted_test_cases():
 
 # Run the formatted test cases
 run_formatted_test_cases()
+
 
 
 
