@@ -18,3 +18,10 @@ print(count_letters(mix))
 print(count_letters(lowercase))
 
 
+
+print(checkout("A"))
+print(checkout(aaa))
+
+
+
+

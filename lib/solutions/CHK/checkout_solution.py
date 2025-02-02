@@ -3,7 +3,9 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    print(type(skus))
     counts = count_letters(skus)
+    return calculateA(counts("A")) + calculateB(counts(B)) + calculateC(counts(C)) + calculateD(counts(D)) 
 
 
 def count_letters(s: str):
@@ -14,13 +16,13 @@ def calculateA(count: int):
     return count * 50
 
 def calculateB(count: int):
-    return count * 50
+    return count * 30
 
 def calculateC(count: int):
-    return count * 50
+    return count * 20
 
 def calculateD(count: int):
-    return count * 50
+    return count * 15
 
 
 """
