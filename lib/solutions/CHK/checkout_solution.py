@@ -1,4 +1,4 @@
-from collections import Counter                                                                                                                                                                  
+from collections import Counter
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -16,10 +16,13 @@ def checkout(skus: str) -> int:
     apply_free_Q_from_R(counts)
     apply_free_U_offer(counts)
 
-    # Calculate total cost
+    # Apply group discount (S, T, X, Y, Z)
+    group_discount_total = apply_group_discount(counts)
+
+    # Calculate total cost after group discount
     total_cost = sum(calculate_price(item, count) for item, count in counts.items() if item != "invalid")
     
-    return total_cost
+    return total_cost + group_discount_total
 
 def count_letters(s: str):
     counts = Counter(s)  # Count occurrences of all characters
@@ -68,22 +71,47 @@ def apply_free_U_offer(counts):
         free_U_count = counts['U'] // 4  # Every 4U gives 1 free
         counts['U'] -= free_U_count  # Reduce count
 
+### ***GROUP DISCOUNT OFFER***
+
+def apply_group_discount(counts):
+    """ Applies the 'buy any 3 of (S, T, X, Y, Z) for 45' offer optimally """
+    group_items = ["S", "T", "X", "Y", "Z"]
+    group_prices = {"S": 20, "T": 20, "X": 17, "Y": 20, "Z": 21}
+    total_group_count = sum(counts[item] for item in group_items if item in counts)
+    
+    group_discount_total = 0
+    while total_group_count >= 3:
+        # Apply group discount
+        group_discount_total += 45
+        total_group_count -= 3
+        
+        # Reduce the counts optimally (remove the most expensive items first)
+        sorted_items = sorted(group_items, key=lambda item: -group_prices[item])
+        for item in sorted_items:
+            if counts.get(item, 0) > 0:
+                counts[item] -= 1
+                total_group_count -= 1
+                if total_group_count < 3:
+                    break
+    
+    return group_discount_total
+
 ### ***PRICE CALCULATION***
 
 def calculate_price(item: str, count: int) -> int:
     """ Calculates the price of an item including any special offers """
     PRICES = {
         "A": 50, "B": 30, "C": 20, "D": 15, "E": 40, "F": 10, "G": 20, "H": 10,
-        "I": 35, "J": 60, "K": 80, "L": 90, "M": 15, "N": 40, "O": 10, "P": 50,
-        "Q": 30, "R": 50, "S": 30, "T": 20, "U": 40, "V": 50, "W": 20, "X": 90,
-        "Y": 10, "Z": 50
+        "I": 35, "J": 60, "K": 70, "L": 90, "M": 15, "N": 40, "O": 10, "P": 50,
+        "Q": 30, "R": 50, "S": 20, "T": 20, "U": 40, "V": 50, "W": 20, "X": 17,
+        "Y": 20, "Z": 21
     }
 
     DISCOUNTS = {
         "A": [(5, 200), (3, 130)],
         "B": [(2, 45)],
         "H": [(10, 80), (5, 45)],
-        "K": [(2, 150)],
+        "K": [(2, 120)],
         "P": [(5, 200)],
         "Q": [(3, 80)],
         "V": [(3, 130), (2, 90)]
@@ -99,3 +127,20 @@ def calculate_price(item: str, count: int) -> int:
         return total_cost
     else:
         return count * PRICES[item]  # Items without discounts
+
+### ***TEST CASES***
+
+print(checkout("STXYZ"))     # 45 (Group discount applies)
+print(checkout("STXXYZ"))    # 45 + 17 (Group discount + 1 extra X)
+print(checkout("STXYZXYZ"))  # 45 + 45 (Two group discounts)
+print(checkout("AAAAA"))     # 200
+print(checkout("EEEEBB"))    # 160
+print(checkout("EEEBBB"))    # 165
+print(checkout("FFFFFF"))    # 40
+print(checkout("NNNM"))      # 120 (3N for 120, M is free)
+print(checkout("RRRQ"))      # 150 (3R for 150, Q is free)
+print(checkout("UUUU"))      # 120 (4U → 3U paid, 1U free)
+print(checkout("PPPPP"))     # 200 (5P for 200)
+print(checkout("QQQ"))       # 80 (3Q for 80)
+print(checkout("VVV"))       # 130 (3V for 130)
+print(checkout("VV"))        # 90 (2V for 90)
