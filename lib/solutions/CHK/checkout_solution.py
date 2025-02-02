@@ -1,9 +1,13 @@
-
+from collections import Counter
 
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    print(skus)
+    counts = count_letters(skus)
+
+def count_letters(s: str):
+    counts = Counter(s)  # Count occurrences of each character
+    return {letter: counts[letter] for letter in "ABCD"}  # Return only counts of A, B, C, and D
 
 
 """
@@ -16,4 +20,5 @@ def checkout(skus):
 | D    | 15    |                |
 +------+-------+----------------+ 
 """
+
 
