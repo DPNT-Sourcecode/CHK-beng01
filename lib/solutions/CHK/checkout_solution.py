@@ -128,19 +128,3 @@ def calculate_price(item: str, count: int) -> int:
     else:
         return count * PRICES[item]  # Items without discounts
 
-### ***TEST CASES***
-
-print(checkout("STXYZ"))     # 45 (Group discount applies)
-print(checkout("STXXYZ"))    # 45 + 17 (Group discount + 1 extra X)
-print(checkout("STXYZXYZ"))  # 45 + 45 (Two group discounts)
-print(checkout("AAAAA"))     # 200
-print(checkout("EEEEBB"))    # 160
-print(checkout("EEEBBB"))    # 165
-print(checkout("FFFFFF"))    # 40
-print(checkout("NNNM"))      # 120 (3N for 120, M is free)
-print(checkout("RRRQ"))      # 150 (3R for 150, Q is free)
-print(checkout("UUUU"))      # 120 (4U → 3U paid, 1U free)
-print(checkout("PPPPP"))     # 200 (5P for 200)
-print(checkout("QQQ"))       # 80 (3Q for 80)
-print(checkout("VVV"))       # 130 (3V for 130)
-print(checkout("VV"))        # 90 (2V for 90)
