@@ -12,10 +12,28 @@ def count_letters(s: str):
     return {letter: counts[letter] for letter in "ABCD"}  # Return only counts of A, B, C, and D
 
 def calculateA(count: int):
-    return count * 50
+    cost_per_apple = 50
+    discount_price = 130  # Cost for 3 apples
+    discount_quantity = 3
+
+    # Calculate cost using discount for every set of 3 apples
+    sets_of_three = n // discount_quantity
+    remaining_apples = n % discount_quantity
+
+    total_cost = (sets_of_three * discount_price) + (remaining_apples * cost_per_apple)
+    return total_cost
 
 def calculateB(count: int):
-    return count * 30
+    cost_per_apple = 30
+    discount_price = 45  # Cost for 3 apples
+    discount_quantity = 2
+
+    # Calculate cost using discount for every set of 3 apples
+    sets_of_two = n // discount_quantity
+    remaining_apples = n % discount_quantity
+
+    total_cost = (sets_of_three * discount_price) + (remaining_apples * cost_per_apple)
+    return total_cost
 
 def calculateC(count: int):
     return count * 20
@@ -34,4 +52,5 @@ def calculateD(count: int):
 | D    | 15    |                |
 +------+-------+----------------+ 
 """
+
 

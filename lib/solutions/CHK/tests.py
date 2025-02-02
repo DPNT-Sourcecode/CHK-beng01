@@ -27,6 +27,12 @@ print(checkout("D"))
 print(checkout(aaa))
 print(checkout(mix))
 
+print(checkout("AAA"))
+print(checkout("AAAAAA"))
+print(checkout("AAA"))
+
+
+
 
 
 
