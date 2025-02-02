@@ -127,4 +127,3 @@ def calculate_price(item: str, count: int) -> int:
         return total_cost
     else:
         return count * PRICES[item]  # Items without discounts
-
