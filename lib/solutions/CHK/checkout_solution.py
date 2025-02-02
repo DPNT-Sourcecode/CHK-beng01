@@ -74,26 +74,31 @@ def apply_free_U_offer(counts):
 ### ***GROUP DISCOUNT OFFER***
 
 def apply_group_discount(counts):
-    """ Applies the 'buy any 3 of (S, T, X, Y, Z) for 45' offer optimally """
+    """ Applies the 'buy any 3 of (S, T, X, Y, Z) for 45' offer optimally. """
     group_items = ["S", "T", "X", "Y", "Z"]
     group_prices = {"S": 20, "T": 20, "X": 17, "Y": 20, "Z": 21}
-    total_group_count = sum(counts[item] for item in group_items if item in counts)
-    
+
+    # Get total count of group items
+    total_group_count = sum(counts.get(item, 0) for item in group_items)
+
     group_discount_total = 0
+    
     while total_group_count >= 3:
         # Apply group discount
         group_discount_total += 45
         total_group_count -= 3
-        
+
         # Reduce the counts optimally (remove the most expensive items first)
         sorted_items = sorted(group_items, key=lambda item: -group_prices[item])
+        
+        removed_count = 0
         for item in sorted_items:
-            if counts.get(item, 0) > 0:
+            while counts.get(item, 0) > 0 and removed_count < 3:
                 counts[item] -= 1
-                total_group_count -= 1
-                if total_group_count < 3:
-                    break
-    
+                removed_count += 1
+            if removed_count >= 3:
+                break
+
     return group_discount_total
 
 ### ***PRICE CALCULATION***
@@ -127,3 +132,4 @@ def calculate_price(item: str, count: int) -> int:
         return total_cost
     else:
         return count * PRICES[item]  # Items without discounts
+

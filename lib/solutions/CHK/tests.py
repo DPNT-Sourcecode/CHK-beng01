@@ -7,6 +7,7 @@ def run_formatted_test_cases():
         ("STXYZ", 82),     # Group discount applies: 20 + 20 + 17 + 20 + 21 - 21 - 20 - 20 + 45 = 82
         ("STXXYZ", 90),   
         ("STXYZXYZ", 124),  # 45 + 45 + 17 + 17
+        ("STXYZXYZX", 135),  # 45 + 45 + 17 + 17
         ("AAAAA", 200),
         ("EEEEBB", 160),
         ("EEEBBB", 165),
@@ -32,3 +33,4 @@ def run_formatted_test_cases():
 
 # Run the formatted test cases
 run_formatted_test_cases()
+
