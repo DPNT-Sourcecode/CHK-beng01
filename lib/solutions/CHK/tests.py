@@ -80,8 +80,3 @@ print(checkout("FFFAB"))    # Expected: 20 (3F) + 50 (A) + 30 (B) = 100
 """
 
 
-
-
-
-
-
