@@ -20,7 +20,14 @@ print(count_letters(lowercase))
 
 
 print(checkout("A"))
+print(checkout("B"))
+print(checkout("C"))
+print(checkout("D"))
+
 print(checkout(aaa))
+print(checkout(mix))
+
+
 
 
 
