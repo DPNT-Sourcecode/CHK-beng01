@@ -26,24 +26,24 @@ lowerUpper = "AaBbCcDd"
 # print(checkout("B"))
 # print(checkout("C"))
 # print(checkout("D"))
+# print(checkout("E"))
+
 
 # print(checkout(aaa))
 # print(checkout(mix))
 
-# print(checkout("AAA"))
-# print(checkout("AAAAAA"))
-# print(checkout("AAAA"))
+print(checkout("AAA"))
+print(checkout("AAAA"))
+print(checkout("AAAAAA"))
+print(checkout("AAAAA"))
+
+
 
 # print(checkout("BB"))
 # print(checkout("BBB"))
 # print(checkout("BBBB"))
 
-print(checkout(mix))
-
-
-
-
-
+# print(checkout(mix))
 
 
 

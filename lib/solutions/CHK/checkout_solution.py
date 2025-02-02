@@ -57,6 +57,12 @@ def calculateD(count: int):
 def calculateE(count: int):
     return count * 40
 
+def apply_free_B_from_E(counts):
+    """ Apply the special offer: Buy 2 E, get 1 B free """
+    if 'E' in counts and 'B' in counts:
+        free_B_count = counts['E'] // 2  # One free B for every 2 Es
+        counts['B'] = max(0, counts['B'] - free_B_count)  # Reduce B count to reflect free Bs
+
 """
 +------+-------+------------------------+
 | Item | Price | Special offers         |
@@ -68,7 +74,3 @@ def calculateE(count: int):
 | E    | 40    | 2E get one B free      |
 +------+-------+------------------------+
 """
-
-
-
-
