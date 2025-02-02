@@ -35,6 +35,37 @@ Our price table and offers:
 +------+-------+------------------------+
 """
 
+def run_test_cases():
+    test_cases = [
+        ("AABBCD", 180),
+        ("AAAAA", 200),
+        ("EEEEBB", 160),
+        ("EEEBBB", 165),
+        ("ABCDX", 205),  # Invalid case
+        ("FFFFFF", 40),
+        ("FFFFF", 40),
+        ("FFF", 20),
+        ("NNNM", 120),
+        ("RRRQ", 150),
+        ("UUUU", 120),
+        ("PPPPP", 200),
+        ("QQQ", 80),
+        ("VVV", 130),
+        ("VV", 90),
+        ("HHHHH", 45),
+        ("HHHHHHHHHH", 80),
+        ("HHHHHHHHHHH", 90),
+    ]
+
+    for skus, expected in test_cases:
+        actual = checkout(skus)
+        result = "✅ PASSED" if actual == expected else f"❌ FAILED (Expected: {expected}, Got: {actual})"
+        print(f"checkout({skus}) -> {actual} | {result}")
+
+# Run all test cases
+run_test_cases()
+
+
 print(checkout("AABBCD"))   # 180 = 100 + 45 + 20 + 15
 print(checkout("AAAAA"))    # 200
 print(checkout("EEEEBB"))   # 160
@@ -53,5 +84,6 @@ print(checkout("VV"))       # 90 (2V for 90)
 print(checkout("HHHHH"))    # 45 (5H for 45)
 print(checkout("HHHHHHHHHH"))  # 80 (10H for 80)
 print(checkout("HHHHHHHHHHH")) # 90 (10H for 80 + 1H for 10)
+
 
 
