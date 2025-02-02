@@ -5,9 +5,22 @@ from collections import Counter
 def checkout(skus):
     counts = count_letters(skus)
 
+
 def count_letters(s: str):
     counts = Counter(s)  # Count occurrences of each character
     return {letter: counts[letter] for letter in "ABCD"}  # Return only counts of A, B, C, and D
+
+def calculateA(count: int):
+    return count * 50
+
+def calculateB(count: int):
+    return count * 50
+
+def calculateC(count: int):
+    return count * 50
+
+def calculateD(count: int):
+    return count * 50
 
 
 """
@@ -20,5 +33,3 @@ def count_letters(s: str):
 | D    | 15    |                |
 +------+-------+----------------+ 
 """
-
-
