@@ -1,5 +1,18 @@
 from collections import Counter
 
+"""
++------+-------+------------------------+
+| Item | Price | Special offers         |
++------+-------+------------------------+
+| A    | 50    | 3A for 130, 5A for 200 |
+| B    | 30    | 2B for 45              |
+| C    | 20    |                        |
+| D    | 15    |                        |
+| E    | 40    | 2E get one B free      |
+| F    | 10    | 2F get one F free      |
++------+-------+------------------------+
+"""
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
@@ -7,7 +20,15 @@ def checkout(skus):
     if counts.get("invalid", 0) > 0: return -1
     apply_free_B_from_E(counts)
     apply_free_F_offer(counts)
-    return calculateA(counts.get('A', 0)) + calculateB(counts.get('B', 0)) + calculateC(counts.get('C', 0)) + calculateD(counts.get('D', 0)) + calculateE(counts.get('E', 0))
+    return (
+        calculateA(counts.get('A', 0)) + 
+        calculateB(counts.get('B', 0)) + 
+        calculateC(counts.get('C', 0)) + 
+        calculateD(counts.get('D', 0)) + 
+        calculateE(counts.get('E', 0)) + 
+        calculateF(counts.get('F', 0)
+    )
+                                                                                                                                                                             )
 
 
 def count_letters(s: str):
@@ -74,15 +95,3 @@ def apply_free_F_offer(counts):
         free_F_count = counts['F'] // 3  # One free F for every 3 Fs
         counts['F'] -= free_F_count  # Reduce count to reflect the free items
 
-"""
-+------+-------+------------------------+
-| Item | Price | Special offers         |
-+------+-------+------------------------+
-| A    | 50    | 3A for 130, 5A for 200 |
-| B    | 30    | 2B for 45              |
-| C    | 20    |                        |
-| D    | 15    |                        |
-| E    | 40    | 2E get one B free      |
-| F    | 10    | 2F get one F free      |
-+------+-------+------------------------+
-"""

@@ -50,13 +50,21 @@ lowerUpper = "AaBbCcDd"
 # print(checkout("BB"))
 # print(checkout("BBB"))
 # print(checkout("BBBB"))
-print(checkout("EEB"))
-
-print(checkout("EEEEBB"))
+# print(checkout("EEB"))
+# print(checkout("EEEEBB"))
 
 # print(checkout(mix))
 
 
+print(checkout("AABBCD"))   # Expected: 180
+print(checkout("AAAAA"))    # Expected: 200
+print(checkout("EEEEBB"))   # Expected: 190
+print(checkout("EEEBBB"))   # Expected: 180
+print(checkout("ABCDX"))    # Expected: -1 (invalid input)
+print(checkout("FFFFFF"))   # Expected: 40 (6F → 4F paid, 2F free)
+print(checkout("FFFFF"))    # Expected: 40 (5F → 4F paid, 1F free)
+print(checkout("FFF"))      # Expected: 20 (3F → 2F paid, 1F free)
+print(checkout("FFFAB"))    # Expected: 20 (3F) + 50 (A) + 30 (B) = 100
 
 
 
