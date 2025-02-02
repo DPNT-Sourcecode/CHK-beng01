@@ -5,7 +5,8 @@ from collections import Counter
 def checkout(skus):
     counts = count_letters(skus)
     if counts.get("invalid", 0) > 0: return -1
-    return calculateA(counts.get('A', 0)) + calculateB(counts.get('B', 0)) + calculateC(counts.get('C', 0)) + calculateD(counts.get('D', 0)) 
+    apply_free_B_from_E(counts)
+    return calculateA(counts.get('A', 0)) + calculateB(counts.get('B', 0)) + calculateC(counts.get('C', 0)) + calculateD(counts.get('D', 0)) + calculateE(counts.get('E', 0))
 
 
 def count_letters(s: str):
